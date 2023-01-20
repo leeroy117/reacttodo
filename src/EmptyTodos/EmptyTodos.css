@@ -1,0 +1,12 @@
+.Todos_Empty{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+h1, h3{
+    margin-top: 0px;
+    margin-bottom: 0px;
+}

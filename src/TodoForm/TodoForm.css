@@ -1,0 +1,52 @@
+.TodoForm_Container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.TodoForm_Content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.TodoForm_Task:focus{
+    outline: 1px solid greenyellow;
+}
+
+.TodoForm_Task{
+    outline: 1px solid black;
+    width: 100%;
+    -webkit-box-shadow: 3px 2px 15px -9px #000000; 
+    box-shadow: 3px 2px 15px -9px #000000;
+}
+
+.TodoForm_Footer{
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1;
+}
+
+.TodoForm_CancelBtn:hover{
+    background-color: red;
+    cursor:pointer;
+}
+
+.TodoForm_CancelBtn{
+    width: fit-content;
+    border: none;
+}
+
+.TodoForm_AddBtn:hover{
+    cursor: pointer;
+}
+
+.TodoForm_AddBtn{
+    width: fit-content;
+    border: none;
+    background-color: rgb(108, 218, 108);
+}

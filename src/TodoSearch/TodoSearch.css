@@ -1,0 +1,9 @@
+.Todo_SearchBox{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  
+.Todo_Search{
+width: 80%;
+}
