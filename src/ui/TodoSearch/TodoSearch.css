@@ -7,3 +7,7 @@
 .Todo_Search{
 width: 80%;
 }
+
+.Todo_Search:disabled{
+  opacity: 50%;
+}

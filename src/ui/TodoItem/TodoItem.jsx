@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faTrash, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import './TodoItem.css';
 
 function TodoItem(props) {
@@ -13,6 +13,9 @@ function TodoItem(props) {
                 onClick={props.onComplete} 
             />
             <span>{props.text}</span>
+            <FontAwesomeIcon icon={faPenToSquare} 
+                onClick={props.onEdit}
+            />
             <FontAwesomeIcon icon={faTrash} 
                 onClick={props.onDelete}
             />

@@ -29,15 +29,12 @@ function TodoProvider(props) {
         item: todos, 
         saveItem: setTodos, 
         loading,
-        error
+        error,
+        syncronizeItem: syncronizeTodos
       } = useLocalStorage('todos', defaultTodos);
       
       const [searchValue, setSearchValue] = React.useState('');
-
-      const [openModal, setOpenModal] = React.useState(false);
-    
       const completedTodos = todos.filter(todo => todo.completed && !todo.deleted ).length;
-    
       const totalTodos = todos.filter(todo => !todo.deleted).length;
     
       let searchedTodos = todos
@@ -99,20 +96,44 @@ function TodoProvider(props) {
         }
       }
 
+      const editTodo = (todoEdit) => {
+        const { id, text } = todoEdit;
+        const newTodos = [...todos];
+
+        const modifiedTodos = newTodos.map((todo) => {
+          if (todo.id === parseInt(id)) {
+            todo.text = text; 
+          }
+          return todo;
+        });
+
+        console.log('modified todos', modifiedTodos);
+
+        setTodos(modifiedTodos);
+      }
+
+      const getters = {
+        error,
+        loading,
+        totalTodos,
+        completedTodos,
+        searchValue,
+        searchedTodos,
+      }
+
+      const setters = {
+        completeTodos,
+        addTodo,
+        editTodo,
+        setSearchValue,
+        deleteTodos,
+        syncronizeTodos,
+      }
+
     return (
         <TodoContext.Provider value={{
-            error,
-            loading,
-            totalTodos,
-            completedTodos,
-            searchValue,
-            setSearchValue,
-            searchedTodos,
-            completeTodos,
-            addTodo,
-            deleteTodos,
-            openModal,
-            setOpenModal,
+            getters:getters,
+            setters:setters
         }}>
             {props.children}
         </TodoContext.Provider>
@@ -120,4 +141,10 @@ function TodoProvider(props) {
     
 }
 
-export {TodoContext,TodoProvider}
+function useTodoContext(){
+  const context = React.useContext(TodoContext);
+  return context;
+  // return React.useContext(TodoContext);
+}
+
+export {TodoContext,TodoProvider, useTodoContext}
